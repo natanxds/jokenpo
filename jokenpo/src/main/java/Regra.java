@@ -17,12 +17,16 @@ class Main {
         String pedra = "pedra";
         String papel = "papel";
         String tesoura = "tesoura";
+        String lagarto = "lagarto";
+        String spock = "spock";
 
         Regra jokenpo = new Regra();
 
-        jokenpo.addRule(papel, Set.of(pedra));
-        jokenpo.addRule(pedra, Set.of(tesoura));
-        jokenpo.addRule(tesoura, Set.of(papel));
+        jokenpo.addRule(papel, Set.of(pedra, spock));
+        jokenpo.addRule(pedra, Set.of(tesoura, lagarto));
+        jokenpo.addRule(tesoura, Set.of(papel, lagarto));
+        jokenpo.addRule(lagarto, Set.of(papel, spock));
+        jokenpo.addRule(spock, Set.of(tesoura, pedra));
 
         boolean pedraGanhaDePapel = jokenpo.jogar(pedra, papel);
         boolean papelGanhaDePedra = jokenpo.jogar(papel, pedra);
